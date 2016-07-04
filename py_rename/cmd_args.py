@@ -24,6 +24,11 @@ def parse_args():
                         metavar='string',
                         action='store',
                         help="Prefix filename with prefix string")
+    parser.add_argument('-D',
+						'--dryrun',
+						dest = 'dryrun',
+						action='store_true',
+						help="Perform a dry run (will no run any actions)")
     parser.add_argument('-B',
                         '--postfix',
                         dest = 'postfix',
