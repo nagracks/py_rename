@@ -20,10 +20,15 @@ class RenameIt:
     
     """
 
-    def __init__(self, filename):
+    def __init__(self, filename, dryrun):
         self.full_name = filename
         # Get filename and fileextention #
         self.filename, self.extension = os.path.splitext(filename)
+
+        # Are we actually doing anything or just preforming a dryrun?
+        self.do_dryrun = dryrun
+        if self.do_dryrun:
+            print "PERFORMING A DRY RUN (NO ACTIONS WILL BE TAKEN)"
 
     def prefix_it(self, prefix_str):
         """Prefix filename with prefix string
@@ -35,7 +40,8 @@ class RenameIt:
         old_name = self.full_name
         new_name = prefix_str + old_name
         try:
-            os.rename(old_name, new_name)
+            if self.do_dryrun == False:
+                os.rename(old_name, new_name)
             print "renaming: {old} --> {new}".format(old=old_name,
                                                      new=new_name)
         except OSError as e:
@@ -51,7 +57,8 @@ class RenameIt:
         old_name = self.full_name
         new_name = self.filename + postfix_str
         try:
-            os.rename(old_name, new_name)
+            if self.do_dryrun == False:
+                os.rename(old_name, new_name)
             print "renaming: {old} --> {new}".format(old=old_name,
                                                      new=new_name)
         except OSError as e:
@@ -65,7 +72,8 @@ class RenameIt:
         old_name = self.full_name
         new_name = old_name.lower()
         try:
-            os.rename(old_name, new_name)
+            if self.do_dryrun == False:
+                os.rename(old_name, new_name)
             print "renaming: {old} --> {new}".format(old=old_name,
                                                      new=new_name)
         except OSError as e:
@@ -85,9 +93,10 @@ def main():
     postfix_str = args.postfix
     filename = args.filename
     lower = args.lower
+    dryrun = args.dryrun
 
     # Initialise RenameIt object #
-    rename_it = RenameIt(filename)
+    rename_it = RenameIt(filename, dryrun)
 
     # Applying args conditions #
     if prefix_str:

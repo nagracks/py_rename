@@ -31,6 +31,11 @@ def parse_args():
                         action='store',
                         help="Postfix filename with postfix string")
     # Boolean args #
+    parser.add_argument('-n',
+                        '--dryrun',
+                        dest = 'dryrun',
+                        action='store_true',
+                        help="Perform a dry run (will no run any actions)")
     parser.add_argument('-l',
                         '--lower',
                         dest='lower',
