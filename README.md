@@ -1,6 +1,10 @@
 # Python Rename
 
-> Python rename script
+> Python file rename script
+
+# Example Usage:
+
+`$ py_rename.py -A vacation-photo- IMG*.jpg`
 
 
 TODO
