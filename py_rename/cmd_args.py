@@ -23,32 +23,35 @@ def parse_args():
                         dest = 'prefix',
                         metavar='string',
                         action='store',
-                        help="Prefix filename with prefix string")
+                        help="prefix filename with prefix string")
     parser.add_argument('-B',
                         '--postfix',
                         dest = 'postfix',
                         metavar='string',
                         action='store',
-                        help="Postfix filename with postfix string")
+                        help="postfix filename with postfix string")
     
     # Boolean args #
     parser.add_argument('-n',
                         '--dryrun',
                         dest = 'dryrun',
                         action='store_true',
-                        help="Perform a dry run (will no run any actions)")
-    parser.add_argument('-l',
-                        '--lower',
+                        help="perform a dry run (will no run any actions)")
+    parser.add_argument( '--lower',
                         dest='lower',
                         action='store_true',
-                        help="Lowercase the filename")
+                        help="lowercase the filename")
     parser.add_argument('--remove-space',
                         action='store_true',
-                        help="Remove space with underscore")
+                        help="remove space with underscore")
+    parser.add_argument('--camel-case',
+                        action='store_true',
+                        help="convert to camel case")
+    
     
     # Positional args #
     parser.add_argument('filename',
-                        help="Filename")
+                        help="filename")
 
     args = parser.parse_args()
     return args

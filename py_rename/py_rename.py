@@ -17,6 +17,8 @@ class RenameIt:
     * prefix_it
     * postfix_it
     * lower_it
+    * remove_space
+    * camel_case
     
     """
 
@@ -96,6 +98,22 @@ class RenameIt:
         except OSError as e:
             print e
 
+    def camel_case(self):
+        """Convert to camel case 
+        :returns: None
+
+        """
+        old_name = self.full_name
+        new_name = ''.join([word.title() for word in old_name.lower().\
+                                                                  split(' ')])
+        try:
+            if self.do_dryrun == False:
+                os.rename(old_name, new_name)
+            print "renaming: {old} --> {new}".format(old=old_name,
+                                                     new=new_name)
+        except OSError as e:
+            print e
+
 def main():
     """Main function
     :returns: None
@@ -112,6 +130,7 @@ def main():
     lower = args.lower
     dryrun = args.dryrun
     remove_space = args.remove_space
+    camel_case = args.camel_case
 
     # Initialise RenameIt object #
     rename_it = RenameIt(filename, dryrun)
@@ -124,6 +143,8 @@ def main():
     elif lower:
         rename_it.lower_it()
     elif remove_space:
+        rename_it.remove_space()
+    elif camel_case:
         rename_it.remove_space()
 
 
