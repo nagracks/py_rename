@@ -30,6 +30,7 @@ def parse_args():
                         metavar='string',
                         action='store',
                         help="Postfix filename with postfix string")
+    
     # Boolean args #
     parser.add_argument('-n',
                         '--dryrun',
@@ -41,6 +42,9 @@ def parse_args():
                         dest='lower',
                         action='store_true',
                         help="Lowercase the filename")
+    parser.add_argument('--remove-space',
+                        action='store_true',
+                        help="Remove space with underscore")
     
     # Positional args #
     parser.add_argument('filename',

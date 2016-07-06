@@ -79,6 +79,23 @@ class RenameIt:
         except OSError as e:
             print e
 
+    def remove_space(self, fill_char='_'):
+        """Remove space with fill_char
+
+        :fill_char: default to '_'
+        :returns: None
+
+        """
+        old_name = self.full_name
+        new_name = old_name.replace(' ', fill_char)
+        try:
+            if self.do_dryrun == False:
+                os.rename(old_name, new_name)
+            print "renaming: {old} --> {new}".format(old=old_name,
+                                                     new=new_name)
+        except OSError as e:
+            print e
+
 def main():
     """Main function
     :returns: None
@@ -94,6 +111,7 @@ def main():
     filename = args.filename
     lower = args.lower
     dryrun = args.dryrun
+    remove_space = args.remove_space
 
     # Initialise RenameIt object #
     rename_it = RenameIt(filename, dryrun)
@@ -105,6 +123,9 @@ def main():
         rename_it.postfix_it(postfix_str)
     elif lower:
         rename_it.lower_it()
+    elif remove_space:
+        rename_it.remove_space()
+
 
 if __name__ == "__main__":
     main()
