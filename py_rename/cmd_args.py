@@ -5,8 +5,10 @@ __author__    = "nagracks"
 __date__      = "02-07-2016"
 __license__   = "GPL3"
 __copyright__ = "Copyright © 2016 nagracks"
+__contributors__ = ["kretusmaximus"]
 
 from argparse import ArgumentParser
+
 
 def parse_args():
     """parse args with argparse
@@ -37,7 +39,7 @@ def parse_args():
                         dest = 'dryrun',
                         action='store_true',
                         help="perform a dry run (will no run any actions)")
-    parser.add_argument( '--lower',
+    parser.add_argument('--lower',
                         dest='lower',
                         action='store_true',
                         help="lowercase the filename")
@@ -47,7 +49,11 @@ def parse_args():
     parser.add_argument('--camel-case',
                         action='store_true',
                         help="convert to camel case")
-    
+    parser.add_argument('-s',
+                        '--silent',
+                        dest = 'silent',
+                        action='store_true',
+                        help="silence output")
     
     # Positional args #
     parser.add_argument('filename',
