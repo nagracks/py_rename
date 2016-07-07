@@ -23,6 +23,7 @@ optional arguments:
   -B string, --postfix string
                         postfix filename with postfix string
   -n, --dryrun          perform a dry run (will no run any actions)
+  -s, --silent          silence output
   --lower               lowercase the filename
   --remove-space        remove space with underscore
   --camel-case          convert to camel case
@@ -41,12 +42,19 @@ appreciated.
 * [x] Convert to lower case
 * [x] Convert to naming conventions `CamelCase` `underscore_case` (need work, not perfect yet)
 * [ ] Implement regular expressions
-
+* [ ] Make arguments work properly (allow for both prefix and postfix, allow making postfix apply before the filename)
+* [ ] Recursively walk directories and bulk-rename files
 
 Contributing
 ------------
 
-Feel free to improve `Python Rename`. All kind of pull-requests are welcome. 
+Feel free to improve `Python Rename`. All kind of pull-requests are welcome.
+
+Contributors
+------------
+
+* [kretusmaximus](https://github.com/kretusmaximus)
+* [astonge](https://github.com/astonge)
 
 LICENSE
 -------
