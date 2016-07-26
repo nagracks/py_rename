@@ -6,11 +6,11 @@ import re
 from cmd_args import parse_args
 
 
-__author__       = "nagracks"
-__date__         = "02-07-2016"
-__license__      = "GPL3"
-__copyright__    = "Copyright © 2016 nagracks"
-__contributors__ = ["kretusmaximus", "astonge", "prabhath6"]
+__author__          = "nagracks"
+__date__            = "02-07-2016"
+__license__         = "GPL3"
+__copyright__       = "Copyright © 2016 nagracks"
+__contributors__    = ["kretusmaximus", "astonge", "prabhath6", "Luki138"]
 
 
 class RenameIt(object):
@@ -23,6 +23,7 @@ class RenameIt(object):
     * lower_it
     * remove_space
     * camel_case
+    * regex_replace
 
     """
 
@@ -140,9 +141,9 @@ def main():
     # Applying args conditions #
     if args.prefix:
         rename_it.prefix_it(args.prefix)
-    elif args.postfix:
+    if args.postfix:
         rename_it.postfix_it(args.postfix)
-    elif args.lower:
+    if args.lower:
         rename_it.lower_it()
     elif args.remove_space:
         rename_it.replace_space()
