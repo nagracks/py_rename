@@ -80,7 +80,6 @@ class RenameIt(object):
         """
         old_name = self.filename
         new_name = prefix_str + old_name
-        # new_name += self.extension
         self._rename(new_name)
 
     def postfix_it(self, postfix_str):
@@ -92,7 +91,6 @@ class RenameIt(object):
         """
         old_name = self.filename
         new_name = old_name + postfix_str
-        # new_name += self.extension
         self._rename(new_name)
 
     def lower_it(self):
@@ -102,7 +100,6 @@ class RenameIt(object):
         """
         old_name = self.filename
         new_name = old_name.lower()
-        # new_name += self.extension
         self._rename(new_name)
 
     def replace_space(self, fill_char='_'):
@@ -125,7 +122,6 @@ class RenameIt(object):
         old_name = self.filename.replace('_', ' ')
         modified_name = re.findall('[\w]+', old_name.lower())
         new_name = ''.join([word.title() for word in modified_name])
-        # new_name += self.extension
         self._rename(new_name)
 
 
@@ -148,9 +144,9 @@ def main():
         rename_it.postfix_it(args.postfix)
     if args.lower:
         rename_it.lower_it()
-    elif args.remove_space:
+    if args.remove_space:
         rename_it.replace_space()
-    elif args.camel_case:
+    if args.camel_case:
         rename_it.camel_case()
 
 
