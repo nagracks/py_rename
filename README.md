@@ -55,6 +55,7 @@ Contributors
 
 * [kretusmaximus](https://github.com/kretusmaximus)
 * [astonge](https://github.com/astonge)
+* [prabhath6](https://github.com/prabhath6)
 
 LICENSE
 -------
