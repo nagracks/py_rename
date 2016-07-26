@@ -118,7 +118,7 @@ class RenameIt(object):
 
         """
 
-        old_name = self.filename
+        old_name = self.filename.replace('_', ' ')
         modified_name = re.findall('[\w]+', old_name.lower())
         new_name = ''.join([word.title() for word in modified_name])
         new_name += self.extension
