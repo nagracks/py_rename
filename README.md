@@ -4,7 +4,7 @@
 
 Usage
 -----
-Operations get executed in the same order the arguments are given!
+Operations get executed in the order shown below (see usage).
 
 ```
 usage: py_rename.py [-h] [-v] [-A string] [-B string] [-n] [--lower]
