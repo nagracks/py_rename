@@ -5,10 +5,10 @@
 from argparse import ArgumentParser
 
 
-__author__       = "nagracks"
-__date__         = "02-07-2016"
-__license__      = "GPL3"
-__copyright__    = "Copyright © 2016 nagracks"
+__author__ = "nagracks"
+__date__ = "02-07-2016"
+__license__ = "GPL3"
+__copyright__ = "Copyright © 2016 nagracks"
 __contributors__ = ["kretusmaximus", "astonge" "prabhath6"]
 
 
@@ -34,6 +34,12 @@ def parse_args():
                         metavar='string',
                         action='store',
                         help="postfix filename with postfix string")
+    parser.add_argument('-R',
+                        '--rename',
+                        dest='rename',
+                        metavar='string',
+                        action='store',
+                        help="rename file using the provided name")
 
     # Boolean args #
     parser.add_argument('-n',

@@ -6,10 +6,10 @@ import re
 from cmd_args import parse_args
 
 
-__author__       = "nagracks"
-__date__         = "02-07-2016"
-__license__      = "GPL3"
-__copyright__    = "Copyright © 2016 nagracks"
+__author__ = "nagracks"
+__date__ = "02-07-2016"
+__license__ = "GPL3"
+__copyright__ = "Copyright © 2016 nagracks"
 __contributors__ = ["kretusmaximus", "astonge", "prabhath6"]
 
 
@@ -124,6 +124,21 @@ class RenameIt(object):
         new_name += self.extension
         self._rename(new_name)
 
+    def rename_file(self, new_name):
+        """Rename old_name to new_name
+        :new_name: new name to be set
+        :returns: None
+        """
+        if '.' in new_name:
+            new_extension = new_name.split('.')[1]
+            if new_extension == self.extension[1:]:
+                return self._rename(new_name)
+            else:
+                raise TypeError('Cannnot convert a .{} file into .{}'
+                                .format(self.extension[1:], new_extension))
+        else:
+            return self._rename(new_name + self.extension)
+
 
 def main():
     """Main function
@@ -148,6 +163,8 @@ def main():
         rename_it.replace_space()
     elif args.camel_case:
         rename_it.camel_case()
+    elif args.rename:
+        rename_it.rename_file(args.rename)
 
 
 if __name__ == "__main__":
