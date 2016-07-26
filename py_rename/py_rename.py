@@ -6,11 +6,11 @@ import re
 from cmd_args import parse_args
 
 
-__author__       = "nagracks"
-__date__         = "02-07-2016"
-__license__      = "GPL3"
-__copyright__    = "Copyright © 2016 nagracks"
-__contributors__ = ["kretusmaximus", "astonge", "prabhath6"]
+__author__          = "nagracks"
+__date__            = "02-07-2016"
+__license__         = "GPL3"
+__copyright__       = "Copyright © 2016 nagracks"
+__contributors__    = ["kretusmaximus", "astonge", "prabhath6", "Luki138"]
 
 
 class RenameIt(object):
@@ -23,6 +23,7 @@ class RenameIt(object):
     * lower_it
     * remove_space
     * camel_case
+    * regex_replace
 
     """
 
@@ -59,9 +60,12 @@ class RenameIt(object):
 
         try:
             if not self.do_dryrun:
-                os.rename(self.full_name, new_name)
+                os.rename(self.full_name, new_name + self.extension)
             self._print("renaming: {old} --> {new}".format(old=self.full_name,
-                                                           new=new_name))
+                                                           new=new_name + self.extension))
+            # set after every rename, makes it possible to run multiple arguments
+            self.filename = new_name
+            self.full_name = self.filename + self.extension
         except OSError as e:
             self._print(
                 "Failed to rename {old} --> {new}: {err}".
@@ -76,7 +80,6 @@ class RenameIt(object):
         """
         old_name = self.filename
         new_name = prefix_str + old_name
-        new_name += self.extension
         self._rename(new_name)
 
     def postfix_it(self, postfix_str):
@@ -88,7 +91,6 @@ class RenameIt(object):
         """
         old_name = self.filename
         new_name = old_name + postfix_str
-        new_name += self.extension
         self._rename(new_name)
 
     def lower_it(self):
@@ -98,7 +100,6 @@ class RenameIt(object):
         """
         old_name = self.filename
         new_name = old_name.lower()
-        new_name += self.extension
         self._rename(new_name)
 
     def replace_space(self, fill_char='_'):
@@ -108,7 +109,7 @@ class RenameIt(object):
         :returns: None
 
         """
-        old_name = self.full_name
+        old_name = self.filename
         new_name = old_name.replace(' ', fill_char)
         self._rename(new_name)
 
@@ -121,7 +122,6 @@ class RenameIt(object):
         old_name = self.filename.replace('_', ' ')
         modified_name = re.findall('[\w]+', old_name.lower())
         new_name = ''.join([word.title() for word in modified_name])
-        new_name += self.extension
         self._rename(new_name)
 
 
@@ -140,13 +140,13 @@ def main():
     # Applying args conditions #
     if args.prefix:
         rename_it.prefix_it(args.prefix)
-    elif args.postfix:
+    if args.postfix:
         rename_it.postfix_it(args.postfix)
-    elif args.lower:
+    if args.lower:
         rename_it.lower_it()
-    elif args.remove_space:
+    if args.remove_space:
         rename_it.replace_space()
-    elif args.camel_case:
+    if args.camel_case:
         rename_it.camel_case()
 
 

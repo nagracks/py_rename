@@ -4,6 +4,7 @@
 
 Usage
 -----
+Operations get executed in the same order the arguments are given!
 
 ```
 usage: py_rename.py [-h] [-v] [-A string] [-B string] [-n] [--lower]
@@ -22,7 +23,7 @@ optional arguments:
                         prefix filename with prefix string
   -B string, --postfix string
                         postfix filename with postfix string
-  -n, --dryrun          perform a dry run (will no run any actions)
+  -n, --dryrun          perform a dry run (will not run any actions)
   -s, --silent          silence output
   --lower               lowercase the filename
   --remove-space        remove space with underscore
@@ -41,8 +42,8 @@ appreciated.
 * [x] Postfix filename with postfix string
 * [x] Convert to lower case
 * [x] Convert to naming conventions `CamelCase` `underscore_case` (need work, not perfect yet)
+* [x] Make arguments work properly (allow for both prefix and postfix, allow making postfix apply before the filename)
 * [ ] Implement regular expressions
-* [ ] Make arguments work properly (allow for both prefix and postfix, allow making postfix apply before the filename)
 * [ ] Recursively walk directories and bulk-rename files
 
 Contributing
@@ -56,6 +57,7 @@ Contributors
 * [kretusmaximus](https://github.com/kretusmaximus)
 * [astonge](https://github.com/astonge)
 * [prabhath6](https://github.com/prabhath6)
+* [Luki138](https://github.com/Luki138)
 
 LICENSE
 -------
