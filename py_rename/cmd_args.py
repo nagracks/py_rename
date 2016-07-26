@@ -1,13 +1,15 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-__author__    = "nagracks"
-__date__      = "02-07-2016"
-__license__   = "GPL3"
-__copyright__ = "Copyright © 2016 nagracks"
-__contributors__ = ["kretusmaximus", "astonge"]
 
 from argparse import ArgumentParser
+
+
+__author__ = "nagracks"
+__date__ = "02-07-2016"
+__license__ = "GPL3"
+__copyright__ = "Copyright © 2016 nagracks"
+__contributors__ = ["kretusmaximus", "astonge"]
 
 
 def parse_args():
@@ -22,21 +24,21 @@ def parse_args():
                         version='%(prog)s version 0.1')
     parser.add_argument('-A',
                         '--prefix',
-                        dest = 'prefix',
+                        dest='prefix',
                         metavar='string',
                         action='store',
                         help="prefix filename with prefix string")
     parser.add_argument('-B',
                         '--postfix',
-                        dest = 'postfix',
+                        dest='postfix',
                         metavar='string',
                         action='store',
                         help="postfix filename with postfix string")
-    
+
     # Boolean args #
     parser.add_argument('-n',
                         '--dryrun',
-                        dest = 'dryrun',
+                        dest='dryrun',
                         action='store_true',
                         help="perform a dry run (will no run any actions)")
     parser.add_argument('--lower',
@@ -51,10 +53,10 @@ def parse_args():
                         help="convert to camel case")
     parser.add_argument('-s',
                         '--silent',
-                        dest = 'silent',
+                        dest='silent',
                         action='store_true',
                         help="silence output")
-    
+
     # Positional args #
     parser.add_argument('filename',
                         help="filename")
