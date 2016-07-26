@@ -5,11 +5,11 @@
 from argparse import ArgumentParser
 
 
-__author__ = "nagracks"
-__date__ = "02-07-2016"
-__license__ = "GPL3"
-__copyright__ = "Copyright © 2016 nagracks"
-__contributors__ = ["kretusmaximus", "astonge"]
+__author__       = "nagracks"
+__date__         = "02-07-2016"
+__license__      = "GPL3"
+__copyright__    = "Copyright © 2016 nagracks"
+__contributors__ = ["kretusmaximus", "astonge" "prabhath6"]
 
 
 def parse_args():
