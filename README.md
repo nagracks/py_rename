@@ -4,11 +4,17 @@
 
 Usage
 -----
-Operations get executed in the order shown below (see usage).
+Operations get executed in the following order:
+  * rename
+  * prefix
+  * postfix
+  * lower
+  * replace spaces
+  * camel case
 
 ```
-usage: py_rename.py [-h] [-v] [-A string] [-B string] [-n] [--lower]
-                    [--remove-space] [--camel-case]
+usage: py_rename.py [-h] [-v] [-A string] [-B string] [-r string] [-n]
+                    [--lower] [--remove-space] [--camel-case] [-s]
                     filename
 
 Python Rename
@@ -23,11 +29,13 @@ optional arguments:
                         prefix filename with prefix string
   -B string, --postfix string
                         postfix filename with postfix string
+  -r string, --rename string
+                        replace filename with string
   -n, --dryrun          perform a dry run (will not run any actions)
-  -s, --silent          silence output
   --lower               lowercase the filename
   --remove-space        remove space with underscore
   --camel-case          convert to camel case
+  -s, --silent          silence output
 ```
 
 `$ py_rename.py -A vacation-photo- IMG*.jpg`
