@@ -117,6 +117,17 @@ class RenameIt(object):
         new_name = ''.join([word.title() for word in modified_name])
         self._rename(new_name)
 
+    def rename(self, rename_string):
+        """ renames file to rename_string
+
+        :rename_string: new filename
+        :returns: None
+
+        """
+        old_name = self.filename
+        new_name = rename_string
+        self._rename(new_name)
+
 
 def main():
     """Main function
@@ -130,6 +141,8 @@ def main():
     rename_it = RenameIt(args.filename, args.dryrun, args.silent)
 
     # Applying args conditions #
+    if args.rename:
+        rename_it.rename(args.rename)
     if args.prefix:
         rename_it.prefix_it(args.prefix)
     if args.postfix:
