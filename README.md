@@ -23,14 +23,9 @@ optional arguments:
                         prefix filename with prefix string
   -B string, --postfix string
                         postfix filename with postfix string
-<<<<<<< HEAD
   -r string, --rename string
                         replace filename with string
   -n, --dryrun          perform a dry run (will not run any actions)
-=======
-  -n, --dryrun          perform a dry run (will not run any actions)
-  -s, --silent          silence output
->>>>>>> upstream/master
   --lower               lowercase the filename
   --remove-space        remove space with underscore
   --camel-case          convert to camel case
