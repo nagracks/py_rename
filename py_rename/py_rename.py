@@ -7,7 +7,7 @@ from cmd_args import parse_args
 
 
 __author__          = "nagracks"
-__date__            = "02-07-2016"
+__date__            = "30-07-2016"
 __license__         = "GPL3"
 __copyright__       = "Copyright © 2016 nagracks"
 __contributors__    = ["kretusmaximus", "astonge", "prabhath6", "Luki138"]
@@ -18,6 +18,7 @@ class RenameIt(object):
     """RenameIt has various methods for rename files
     eg:
 
+    * rename
     * prefix_it
     * postfix_it
     * lower_it
@@ -124,6 +125,17 @@ class RenameIt(object):
         new_name = ''.join([word.title() for word in modified_name])
         self._rename(new_name)
 
+    def rename(self, rename_string):
+        """ renames file to rename_string
+
+        :rename_string: new filename
+        :returns: None
+
+        """
+        old_name = self.filename
+        new_name = rename_string
+        self._rename(new_name)
+
 
 def main():
     """Main function
@@ -138,6 +150,8 @@ def main():
     rename_it = RenameIt(args.filename, args.dryrun, args.silent)
 
     # Applying args conditions #
+    if args.rename:
+        rename_it.rename(args.rename)
     if args.prefix:
         rename_it.prefix_it(args.prefix)
     if args.postfix:
