@@ -51,9 +51,6 @@ def parse_args():
                         action='store',
                         help="regex support, matches get replaced with --rename string")
     """
-=======
-                        help="replace regex with string")
->>>>>>> upstream/master
     # Boolean args #
     parser.add_argument('-n',
                         '--dryrun',
