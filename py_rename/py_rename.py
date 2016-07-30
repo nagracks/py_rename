@@ -7,7 +7,11 @@ from cmd_args import parse_args
 
 
 __author__          = "nagracks"
+<<<<<<< HEAD
 __date__            = "30-07-2016"
+=======
+__date__            = "02-07-2016"
+>>>>>>> upstream/master
 __license__         = "GPL3"
 __copyright__       = "Copyright © 2016 nagracks"
 __contributors__    = ["kretusmaximus", "astonge", "prabhath6", "Luki138"]
@@ -123,6 +127,7 @@ class RenameIt(object):
         old_name = self.filename.replace('_', ' ')
         modified_name = re.findall('[\w]+', old_name.lower())
         new_name = ''.join([word.title() for word in modified_name])
+<<<<<<< HEAD
         self._rename(new_name)
 
     def rename(self, rename_string):
@@ -134,6 +139,8 @@ class RenameIt(object):
         """
         old_name = self.filename
         new_name = rename_string
+=======
+>>>>>>> upstream/master
         self._rename(new_name)
 
 

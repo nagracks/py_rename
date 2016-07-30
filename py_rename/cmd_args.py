@@ -35,6 +35,7 @@ def parse_args():
                         action='store',
                         help="postfix filename with postfix string")
 
+<<<<<<< HEAD
     parser.add_argument('-r',
                         '--rename',
                         dest='rename',
@@ -44,12 +45,19 @@ def parse_args():
 
     # TODO implement regex
     """ parser.add_argument('-R',
+=======
+    parser.add_argument('-R',
+>>>>>>> upstream/master
                         '--regex',
                         dest='regex',
                         metavar='string',
                         action='store',
+<<<<<<< HEAD
                         help="regex support, matches get replaced with --rename string")
     """
+=======
+                        help="replace regex with string")
+>>>>>>> upstream/master
     # Boolean args #
     parser.add_argument('-n',
                         '--dryrun',
