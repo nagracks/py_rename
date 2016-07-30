@@ -4,7 +4,13 @@
 
 Usage
 -----
-Operations get executed in the order shown below (see usage).
+Operations get executed in the following order:
+  * rename
+  * prefix
+  * postfix
+  * lower
+  * replace spaces
+  * camel case
 
 ```
 usage: py_rename.py [-h] [-v] [-A string] [-B string] [-r string] [-n]
