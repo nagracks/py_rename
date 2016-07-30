@@ -42,18 +42,20 @@ def parse_args():
                         action='store',
                         help="replace filename with string")
 
-    parser.add_argument('-R',
+    # TODO implement regex
+    """ parser.add_argument('-R',
                         '--regex',
                         dest='regex',
                         metavar='string',
                         action='store',
                         help="regex support, matches get replaced with --rename string")
+    """
     # Boolean args #
     parser.add_argument('-n',
                         '--dryrun',
                         dest='dryrun',
                         action='store_true',
-                        help="perform a dry run (will no run any actions)")
+                        help="perform a dry run (will not run any actions)")
     parser.add_argument('--lower',
                         dest='lower',
                         action='store_true',
