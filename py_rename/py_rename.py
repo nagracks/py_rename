@@ -18,8 +18,8 @@ class RenameIt(object):
     """Class RenameIt
 
     Constructor args:
-    filename
-    dryrun
+    filename: Name of file
+    dryrun: Just dry run, not perform any action
     silent
 
     methods
@@ -28,6 +28,7 @@ class RenameIt(object):
     * lower_it
     * replace_space
     * camel_case
+    * rename
     """
 
     def __init__(self, filename, dryrun, silent):
@@ -46,6 +47,7 @@ class RenameIt(object):
         """Print msg if not silent
 
         :msg: str, What to print
+        :return: None
         """
         if not self.silent:
             print(msg)
@@ -120,9 +122,8 @@ class RenameIt(object):
     def rename(self, rename_string):
         """ renames file to rename_string
 
-        :rename_string: new filename
+        :rename_string: str,  new filename
         :returns: None
-
         """
         old_name = self.filename
         new_name = rename_string
