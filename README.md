@@ -4,13 +4,6 @@
 
 Usage
 -----
-Operations get executed in the following order:
-  * rename
-  * prefix
-  * postfix
-  * lower
-  * replace spaces
-  * camel case
 
 ```
 usage: py_rename.py [-h] [-v] [-A string] [-B string] [-r string] [-n]
@@ -50,7 +43,7 @@ appreciated.
 * [x] Postfix filename with postfix string
 * [x] Convert to lower case
 * [x] Convert to naming conventions `CamelCase` `underscore_case` (need work, not perfect yet)
-* [x] Make arguments work properly (allow for both prefix and postfix, allow making postfix apply before the filename)
+* [x] Make arguments work properly
 * [ ] Implement regular expressions
 * [ ] Recursively walk directories and bulk-rename files
 
