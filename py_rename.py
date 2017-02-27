@@ -1,16 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+__author__    = "nagracks"
+__date__      = "02-07-2016"
+__license__   = "MIT"
+__copyright__ = "Copyright © 2016 nagracks"
+
 import os
 import re
 from argparse import ArgumentParser
-
-
-__author__          = "nagracks"
-__date__            = "02-07-2016"
-__license__         = "GPL3"
-__copyright__       = "Copyright © 2016 nagracks"
-__contributors__    = ["kretusmaximus", "astonge", "prabhath6", "Luki138"]
 
 
 class RenameIt(object):
@@ -18,23 +16,23 @@ class RenameIt(object):
     """Class RenameIt
 
     Constructor args:
-    filename: Name of file
-    dryrun: Just dry run, not perform any action
-    silent
+     :filename: Name of file
+     :dryrun: Just dry run, not perform any action
+     :silent:
 
-    methods
-    * prefix_it
-    * postfix_it
-    * lower_it
-    * replace_space
-    * camel_case
-    * rename
+    Methods:
+     * prefix_it
+     * postfix_it
+     * lower_it
+     * replace_space
+     * camel_case
+     * rename
     """
 
     def __init__(self, filename, dryrun, silent):
         self.full_name = filename
         # Get filename and file extension #
-        self.filename, self.extension = os.path.splitext(filename)
+        self.fname, self.fext = os.path.splitext(filename)
         # Suppress output?
         self.silent = silent
         # Are we actually doing anything or just preforming a dryrun?
@@ -46,7 +44,7 @@ class RenameIt(object):
     def _print(self, *msg):
         """Print msg if not silent
 
-        :msg: str, What to print
+        :msg: *str, What to print
         :return: None
         """
         if not self.silent:
@@ -60,13 +58,13 @@ class RenameIt(object):
         """
         try:
             if not self.do_dryrun:
-                os.rename(self.full_name, new_name + self.extension)
+                os.rename(self.full_name, new_name + self.fext)
             self._print("renaming: {old} --> {new}".format(old=self.full_name,
-                                                new=new_name + self.extension))
-            # Set after every rename, 
-            # Makes it possible to run multiple arguments
-            self.filename = new_name
-            self.full_name = self.filename + self.extension
+                                                new=new_name + self.fext))
+            # Set after every rename, makes it possible to run multiple
+            # arguments
+            self.fname = new_name
+            self.full_name = self.fname + self.fext
         except OSError as e:
             self._print(
                 "Failed to rename {old} --> {new}: {err}".
@@ -78,7 +76,7 @@ class RenameIt(object):
         :prefix_str: str, string to use as prefix in filename
         :returns: None
         """
-        old_name = self.filename
+        old_name = self.fname
         new_name = prefix_str + old_name
         self._rename(new_name)
 
@@ -88,7 +86,7 @@ class RenameIt(object):
         :postfix_str: str, string to use as postfix in filename
         :returns: None
         """
-        old_name = self.filename
+        old_name = self.fname
         new_name = old_name + postfix_str
         self._rename(new_name)
 
@@ -96,7 +94,7 @@ class RenameIt(object):
         """Lowercase the filename
         :returns: None
         """
-        old_name = self.filename
+        old_name = self.fname
         new_name = old_name.lower()
         self._rename(new_name)
 
@@ -106,7 +104,7 @@ class RenameIt(object):
         :fill_char: default to '_'
         :returns: None
         """
-        old_name = self.filename
+        old_name = self.fname
         new_name = old_name.replace(' ', fill_char)
         self._rename(new_name)
 
@@ -114,7 +112,7 @@ class RenameIt(object):
         """Convert to camel case
         :returns: None
         """
-        old_name = self.filename.replace('_', ' ')
+        old_name = self.fname.replace('_', ' ')
         modified_name = re.findall('[\w]+', old_name.lower())
         new_name = ''.join([word.title() for word in modified_name])
         self._rename(new_name)
@@ -125,12 +123,12 @@ class RenameIt(object):
         :rename_string: str,  new filename
         :returns: None
         """
-        old_name = self.filename
+        old_name = self.fname
         new_name = rename_string
         self._rename(new_name)
 
 
-def main():
+if __name__ == "__main__":
     parser = ArgumentParser(description="Python Rename")
     parser.add_argument(
             '-v',
@@ -199,10 +197,8 @@ def main():
 
     args = parser.parse_args()
 
-    # Initialise RenameIt object #
     rename_it = RenameIt(args.filename, args.dryrun, args.silent)
 
-    # Applying args conditions #
     if args.rename:
         rename_it.rename(args.rename)
     if args.prefix:
@@ -215,7 +211,3 @@ def main():
         rename_it.replace_space()
     if args.camel_case:
         rename_it.camel_case()
-
-
-if __name__ == "__main__":
-    main()
