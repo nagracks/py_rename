@@ -90,6 +90,25 @@ class RenameIt(object):
         new_name = old_name + postfix_str
         self._rename(new_name)
 
+    def remove_it(self,n_chars):
+        """Remove characters from the start or end of filename
+
+        :n_chars: int, number of characters to remove. +ve from start, -ve from end
+        :returns: None
+        """
+        old_name = self.fname
+        length = len(old_name)
+        if abs(n_chars) >= length:
+            self._print(
+                "Failed to rename {old} : {err}".
+                format(old=self.full_name, err="Number of characters equals or exceeds length of filename"))
+        elif n_chars >= 0:
+            new_name = old_name[n_chars::]
+            self._rename(new_name)
+        else:
+            new_name = old_name[0:n_chars]
+            self._rename(new_name)
+
     def lower_it(self):
         """Lowercase the filename
         :returns: None
@@ -153,6 +172,15 @@ if __name__ == "__main__":
             help="postfix filename with postfix string"
             )
     parser.add_argument(
+            '-C',
+            '--remove',
+            dest='remove',
+            type=int,
+            metavar='int',
+            action='store',
+            help="remove characters from start or end of filename (+ve for start, -ve for end)"
+            )
+    parser.add_argument(
             '-r',
             '--rename',
             dest='rename',
@@ -205,6 +233,8 @@ if __name__ == "__main__":
         rename_it.prefix_it(args.prefix)
     if args.postfix:
         rename_it.postfix_it(args.postfix)
+    if args.remove:
+        rename_it.remove_it(args.remove)
     if args.lower:
         rename_it.lower_it()
     if args.remove_space:

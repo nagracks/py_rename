@@ -22,6 +22,8 @@ optional arguments:
                         prefix filename with prefix string
   -B string, --postfix string
                         postfix filename with postfix string
+  -C int, --remove int  remove characters from start or end of filename (+ve
+                        for start, -ve for end)
   -r string, --rename string
                         replace filename with string
   -n, --dryrun          perform a dry run (will not run any actions)
